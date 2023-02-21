@@ -64,8 +64,6 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # show it in a table in streamlit
 streamlit.dataframe(fruityvice_normalized)
 
-streamlit.stop()
-
 # Allow the end user to add a fruit to the list
 def insert_row_snowflake(new_fruit):
    with my_cnx.cursor() as my_cur:
@@ -76,3 +74,5 @@ add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 if streamlit_button('Add a Fruit to the List'):
         back_from_function = insert_row_snowflake(add_my_fruit)
         streamlit.text(back_from_function)
+
+streamlit.stop()
